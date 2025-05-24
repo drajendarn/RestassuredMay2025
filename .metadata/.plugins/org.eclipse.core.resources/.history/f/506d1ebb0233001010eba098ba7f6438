@@ -1,0 +1,8 @@
+package week1.day1.restassured;
+
+public class CreateIncidentPOJO {
+
+	
+	private String description ;
+	private String shortDescription;
+}

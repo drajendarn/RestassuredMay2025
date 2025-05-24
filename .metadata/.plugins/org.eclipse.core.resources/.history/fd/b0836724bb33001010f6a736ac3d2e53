@@ -1,0 +1,21 @@
+package week3.day2.restassuredTestNGDataProvider;
+import static io.restassured.RestAssured.*;
+
+import java.io.File;
+
+import org.testng.annotations.BeforeMethod;
+
+public class RequestChaining {
+	
+	String sysID;
+	File ceateIncident;
+	File updateIncident;
+	@BeforeMethod
+	public void beforeMethod()
+	{
+		File ceateIncident=new File("\\src\\main\\resources\\RequestPayload\\Create_incident.json");
+		File updateIncident=new File("\\src\\main\\resources\\RequestPayload\\Update_incident.json");
+	}
+	
+
+}

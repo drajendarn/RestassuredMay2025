@@ -1,0 +1,31 @@
+package week1.day1.restassured;
+
+import java.io.File;
+
+import io.restassured.RestAssured;
+
+/* Pass request Payload using File - fetches data from .json file*/
+
+public class Post_CreateNewRecordusingFile {
+	public static void main(String[] args) {
+		
+		File reqBody=new File("/src/main/resources/RequestPayload/Create_incident.json");
+		
+		RestAssured
+		.given()
+		.baseUri("https://dev340392.service-now.com")
+		.basePath("api/now/table")
+		.auth()
+		.basic("admin", "n=oyj4W4IJD/")
+		.pathParam("table-name", "incident")
+		.header("content-type","application/json")
+		.body(reqBody)
+		.when()
+		.post("/{table-name}") //here incident value is sent
+		.then()
+		.assertThat()
+		.statusCode(201)
+		.log().all();
+	}
+
+}

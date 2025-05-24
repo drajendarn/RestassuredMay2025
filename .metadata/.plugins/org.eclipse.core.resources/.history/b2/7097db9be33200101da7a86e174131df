@@ -1,0 +1,21 @@
+package week1.day1.restassured;
+
+import io.restassured.RestAssured;
+
+public class getRequestQueryPathparameter {
+
+	public static void main(String[] args) {
+		
+		RestAssured
+		.given()
+		.baseUri("https://dev340392.service-now.com")
+		.basePath("api/now/table")
+		//.pathParam(null, args)
+		.when()
+		.get("/incident")
+		.then()
+		.assertThat()
+		.statusCode(2000);
+	}
+
+}

@@ -1,0 +1,32 @@
+package week1.day1.restassured;
+
+import io.restassured.RestAssured;
+
+public class Post_CreateNewRecordusingPOGODynamic {
+	public static void main(String[] args) {
+		
+		//Passing values dynamically using POJO class getter and setter
+		
+		CreateIncidentPOJO reqBody= new CreateIncidentPOJO();
+		reqBody.setDescription("Dynamic description");
+		reqBody.setShortDescription("Dynamic values in setshortDescription");
+		
+		
+		RestAssured
+		.given()
+		.baseUri("https://dev340392.service-now.com")
+		.basePath("api/now/table")
+		.auth()
+		.basic("admin", "n=oyj4W4IJD/")
+		.pathParam("table-name", "incident")
+		.header("content-type","application/json")
+		.body(reqBody) 
+		.when()
+		.post("/{table-name}") //here incident value is sent
+		.then()
+		.assertThat()
+		.statusCode(201)
+		.log().all();
+	}
+
+}

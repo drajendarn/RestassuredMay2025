@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-05-18T13:33:12 IST" name="Default suite" finished-at="2025-05-18T13:33:25 IST" duration-ms="13631">
+    <groups>
+    </groups>
+    <test started-at="2025-05-18T13:33:12 IST" name="Default test" finished-at="2025-05-18T13:33:25 IST" duration-ms="13631">
+      <class name="week3.day2.restassuredTestNGDataProvider.RequestChaining">
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:week3.day2.restassuredTestNGDataProvider.RequestChaining@ffaa6af]" started-at="2025-05-18T13:33:12 IST" name="beforeMethod" finished-at="2025-05-18T13:33:12 IST" duration-ms="8" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="create()[pri:1, instance:week3.day2.restassuredTestNGDataProvider.RequestChaining@ffaa6af]" started-at="2025-05-18T13:33:12 IST" name="create" finished-at="2025-05-18T13:33:17 IST" duration-ms="5704" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- create -->
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:week3.day2.restassuredTestNGDataProvider.RequestChaining@ffaa6af]" started-at="2025-05-18T13:33:17 IST" name="beforeMethod" finished-at="2025-05-18T13:33:17 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="get()[pri:2, instance:week3.day2.restassuredTestNGDataProvider.RequestChaining@ffaa6af]" started-at="2025-05-18T13:33:17 IST" name="get" finished-at="2025-05-18T13:33:20 IST" duration-ms="2425" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- get -->
+        <test-method signature="update()[pri:3, instance:week3.day2.restassuredTestNGDataProvider.RequestChaining@ffaa6af]" started-at="2025-05-18T13:33:20 IST" name="update" finished-at="2025-05-18T13:33:22 IST" duration-ms="2501" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- update -->
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:week3.day2.restassuredTestNGDataProvider.RequestChaining@ffaa6af]" started-at="2025-05-18T13:33:20 IST" name="beforeMethod" finished-at="2025-05-18T13:33:20 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:week3.day2.restassuredTestNGDataProvider.RequestChaining@ffaa6af]" started-at="2025-05-18T13:33:22 IST" name="beforeMethod" finished-at="2025-05-18T13:33:22 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="delete()[pri:4, instance:week3.day2.restassuredTestNGDataProvider.RequestChaining@ffaa6af]" started-at="2025-05-18T13:33:22 IST" name="delete" finished-at="2025-05-18T13:33:25 IST" duration-ms="2893" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- delete -->
+      </class> <!-- week3.day2.restassuredTestNGDataProvider.RequestChaining -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

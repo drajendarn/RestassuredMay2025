@@ -1,0 +1,90 @@
+package week3.day2.restassuredTestNGDataProvider;
+import static io.restassured.RestAssured.*;
+
+import java.io.File;
+
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+
+public class RequestChaining {
+	
+	String sysID;
+	File ceateIncident;
+	File updateIncident;
+	@BeforeMethod
+	public void beforeMethod()
+	{
+		ceateIncident=new File("C:\\Users\\DIVYA\\Desktop\\RestAssured\\ReAssuredWorkspace\\org.restassured\\src\\main\\resources\\RequestPayload\\Create_incident.json");
+		updateIncident=new File("C:\\Users\\DIVYA\\Desktop\\RestAssured\\ReAssuredWorkspace\\org.restassured\\src\\main\\resources\\RequestPayload\\Update_incident.json");
+	}
+	
+	@Test(priority=1)
+	public void create()
+	{
+		sysID=RestAssured
+		.given()
+		.baseUri("https://dev340392.service-now.com")
+		.basePath("api/now/table")
+		.auth()
+		.basic("admin", "n=oyj4W4IJD/")
+		.pathParam("table-name", "incident")
+		.header("content-type","application/json")
+		.body(ceateIncident)
+		.when()
+		.post("/{table-name}") //here incident value is sent
+		.then()
+		.assertThat()
+		.statusCode(201)
+		.extract()
+		.jsonPath()
+		.getString("result.sys_id");
+		
+		System.out.println("Newly created sysid is : "+ sysID);
+	
+	}
+	
+	@Test(priority=2)
+	public void get()
+	{
+		RestAssured
+		.given()
+		.baseUri("https://dev340392.service-now.com")
+		.basePath("api/now/table")
+		.auth()
+		.basic("admin", "n=oyj4W4IJD/")
+		.pathParam("table-name", "incident")
+		.pathParam("sys_id", sysID)
+		.header("content-type","application/json")
+		.body(ceateIncident)
+		.when()
+		.get("/{table-name}/{sys_id}") //here incident value is sent
+		.then()
+		.assertThat()
+		.statusCode(200)
+		.log().all();
+	}
+	
+	@Test(priority=3)
+	public void update()
+	{
+		RestAssured
+		.given()
+		.baseUri("https://dev340392.service-now.com")
+		.basePath("api/now/table")
+		.auth()
+		.basic("admin", "n=oyj4W4IJD/")
+		.pathParam("table-name", "incident")
+		.pathParam("sys_id", sysID)
+		.header("content-type","application/json")
+		.body(updateIncident)
+		.when()
+		.put("/{table-name}/{sys_id}") //here incident value is sent
+		.then()
+		.assertThat()
+		.statusCode(204)
+		.log().all();
+	}
+
+}

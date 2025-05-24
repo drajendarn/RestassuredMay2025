@@ -1,0 +1,57 @@
+package week3.day2.restassuredTestNGDataProvider;
+
+import org.hamcrest.Matcher;
+import org.hamcrest.Matchers;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import week1.day1.restassured.CreateIncidentPOJO;
+
+public class Post_CreateNewRecordusingPOGODynamic {
+	
+	
+	@DataProvider(name="testData")
+	public String[][] testData() {
+		return new String[][] {
+			{"RESTAPIMAY2025 1", "Create a new record using POST method 1"},
+			{"RESTAPIMAY2025 2", "Create a new record using POST method 2"},
+		};
+	}
+	
+	@Test(dataProvider="testData")
+	public static void createData(String description,String shortDescription) {
+		
+		//Passing values dynamically using POJO class getter and setter
+		
+		CreateIncidentPOJO reqBody= new CreateIncidentPOJO();
+		reqBody.setDescription(description);
+		reqBody.setShortDescription(shortDescription);
+		
+		
+		String SysId= RestAssured
+		.given()
+		.baseUri("https://dev340392.service-now.com")
+		.basePath("api/now/table")
+		.auth()
+		.basic("admin", "n=oyj4W4IJD/")
+		.pathParam("table-name", "incident")
+		.header("content-type","application/json")
+		.log().all()
+		.body(reqBody) 
+		.when()
+		.post("/{table-name}") //here incident value is sent
+		.then()
+		.assertThat()
+		.statusCode(201)
+		.statusLine(Matchers.containsString("Created"))
+		.extract()
+		.jsonPath()
+		.getString("result.sys_id");
+		
+		System.out.println(SysId);
+	}
+	
+	
+}

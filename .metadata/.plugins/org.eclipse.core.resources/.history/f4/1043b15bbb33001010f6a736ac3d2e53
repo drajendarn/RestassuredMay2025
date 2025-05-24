@@ -1,0 +1,43 @@
+package week3.day2.restassuredTestNGDataProvider;
+import static io.restassured.RestAssured.*;
+
+import java.io.File;
+
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+
+public class RequestChaining {
+	
+	String sysID;
+	File ceateIncident;
+	File updateIncident;
+	@BeforeMethod
+	public void beforeMethod()
+	{
+		File ceateIncident=new File("/src/main/resources/RequestPayload/Create_incident.json");
+		File updateIncident=new File("/src/main/resources/RequestPayload/Update_incident.json");
+	}
+	
+	@Test
+	public void create()
+	{
+		RestAssured
+		.given()
+		.baseUri("https://dev340392.service-now.com")
+		.basePath("api/now/table")
+		.auth()
+		.basic("admin", "n=oyj4W4IJD/")
+		.pathParam("table-name", "incident")
+		.header("content-type","application/json")
+		.body(ceateIncident)
+		.when()
+		.post("/{table-name}") //here incident value is sent
+		.then()
+		.assertThat()
+		.statusCode(201)
+		.log().all();
+	}
+
+}
